@@ -17,7 +17,7 @@ export class EntriesComponent implements OnInit {
   ngOnInit() {
   }
   add(entry: Entry): void {
-    // this.dialog.open()
+    // this.dialog.open(
     ENTRIES.push(entry);
     this.snack('Entry added!');
   }
@@ -32,3 +32,19 @@ export class EntriesComponent implements OnInit {
     this.snackBar.open(msg, '', { duration: 1000 });
   }
 }
+
+// @Component({
+//   selector: 'dialog-overview-example-dialog',
+//   templateUrl: 'dialog-overview-example-dialog.html',
+// })
+// export class DialogOverviewExampleDialog {
+
+//   constructor(
+//     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+//     @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
+
+// }
