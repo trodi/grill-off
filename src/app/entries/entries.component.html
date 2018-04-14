@@ -1,0 +1,52 @@
+<div class="container" fxLayout="wrap row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <mat-card>
+    <button mat-button (click)="add({id:-1, userId: '', name:'Fake Meal Entry'})" class="full">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card>
+  <mat-card *ngFor="let entry of entries">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon>face</mat-icon>
+      </div>
+      <mat-card-title>{{entry.name}}</mat-card-title>
+      <mat-card-subtitle>{{entry.userId}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{entry.img}}">
+    <mat-card-content>
+      Description of meal?
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="delete(entry)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-button (click)="vote(entry)">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!-- <mat-grid-list cols="2" rowHeight="300px" gutterSize="0.5%">
+  <mat-grid-tile *ngFor="let entry of entries">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar>
+          <mat-icon>face</mat-icon>
+        </div>
+        <mat-card-title>{{entry.name}}</mat-card-title>
+        <mat-card-subtitle>{{entry.userId}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        Description of meal?
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="delete(entry)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-button (click)="vote(entry)">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list> -->
