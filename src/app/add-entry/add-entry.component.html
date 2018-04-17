@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Add Entry</h1>
+<div>
+  <mat-form-field>
+    <input matInput [(ngModel)]="name" placeholder="Meal name">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <input matInput [(ngModel)]="team" placeholder="Team name">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field>
+    <input matInput [(ngModel)]="description" placeholder="Description">
+  </mat-form-field>
+</div>
+<div>
+  <input type="file" placeholder="Meal name">
+</div>
+<button mat-button (click)="cancel()">Cancel</button>
+<button mat-button (click)="add()" color="primary">Add</button>

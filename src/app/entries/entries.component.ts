@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ENTRIES } from '../mock-entries';
 import { Entry } from '../entry';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { AddEntryComponent } from '../add-entry/add-entry.component';
 
 @Component({
   selector: 'app-entries',
@@ -16,10 +17,21 @@ export class EntriesComponent implements OnInit {
 
   ngOnInit() {
   }
-  add(entry: Entry): void {
-    // this.dialog.open(
-    ENTRIES.push(entry);
-    this.snack('Entry added!');
+  add(): void {
+    const ref = this.dialog.open(AddEntryComponent);
+    ref.afterClosed().subscribe((data) => {
+      if (data) {
+        ENTRIES.push({
+          id: Date.now(), // tmp way of getting an ID
+          name: data.name,
+          userId: data.team,
+          description: data.description });
+        this.snack('Entry added!');
+      }
+    });
+  }
+  edit(entry: Entry): void {
+    this.snack('Editing not implemented!');
   }
   delete(entry: Entry): void {
     ENTRIES.splice(ENTRIES.indexOf(entry), 1);
@@ -32,19 +44,3 @@ export class EntriesComponent implements OnInit {
     this.snackBar.open(msg, '', { duration: 1000 });
   }
 }
-
-// @Component({
-//   selector: 'dialog-overview-example-dialog',
-//   templateUrl: 'dialog-overview-example-dialog.html',
-// })
-// export class DialogOverviewExampleDialog {
-
-//   constructor(
-//     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-//     @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-
-// }

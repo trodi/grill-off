@@ -9,4 +9,5 @@ export class Entry implements IEntry {
     /** This will point to a user/team id eventually. */
     userId: string;
     img?: string;
+    description?: string;
 }
